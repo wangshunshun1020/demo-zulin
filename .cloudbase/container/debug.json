@@ -1,0 +1,27 @@
+{
+  "containers": [
+    {
+      "name": "demo-zulin",
+      "containerId": "85b6527b7927f0e46e15c2e6f742c60b839ce022d57afbffe99c6248e02292c7",
+      "domain": "",
+      "ip": ""
+    }
+  ],
+  "config": {
+    "demo-zulin": {
+      "remark": "",
+      "dockerfilePath": "Dockerfile",
+      "buildDir": "",
+      "minNum": 0,
+      "maxNum": 50,
+      "cpu": 0.5,
+      "mem": 1,
+      "policyType": "cpu",
+      "policyThreshold": 60,
+      "envParams": {},
+      "customLogs": "stdout",
+      "containerPort": 80,
+      "initialDelaySeconds": 2
+    }
+  }
+}
