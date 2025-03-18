@@ -45,41 +45,41 @@ class User extends Api
 		$this->request->filter(['strip_tags']);
 		if ($this->request->isPost()) {
 
-			$post = $this->request->post();
-			$platform = request()->header('platform');
-		    if (!isset($post['iv'])) {
-		        $this->error(__('获取手机号异常'));
-		    }
-		    // 获取配置
-		    $config = Config::getValueByName('wxminiprogram');
+//			$post = $this->request->post();
+//			$platform = request()->header('platform');
+//		    if (!isset($post['iv'])) {
+//		        $this->error(__('获取手机号异常'));
+//		    }
+//		    // 获取配置
+//		    $config = Config::getValueByName('wxminiprogram');
+//
+//			if(empty($config['app_id']) || empty($config['secret'])){
+//				$this->error(__('请到后台配置中心平台配置中配置微信小程序AppID和AppSecret'));
+//			}
+//
+//	        $params = [
+//			    'appid'    => $config['app_id'],
+//			    'secret'   => $config['secret'],
+//			    'js_code'  => $post['code'],
+//			    'grant_type' => 'authorization_code'
+//			];
+//
+//			$result = Http::sendRequest("https://api.weixin.qq.com/sns/jscode2session", $params, 'GET');
+//			$json = (array)json_decode($result['msg'], true);
+//
+//			if(!isset($json['openid'])){
+//				$this->error(__('小程序AppID或AppSecret配置错误'));
+//			}
+//
+//			// 手机号解码
+//			$encryptedData = request()->post('encryptedData','','trim');
+//			$decrypt = new wxBizDataCrypt($params['appid'], $json['session_key']);
+//			$decrypt->decryptData($encryptedData, $post['iv'], $data);
+//			$data = (array)json_decode($data, true);
 
-			if(empty($config['app_id']) || empty($config['secret'])){
-				$this->error(__('请到后台配置中心平台配置中配置微信小程序AppID和AppSecret'));
-			}
-
-	        $params = [
-			    'appid'    => $config['app_id'],
-			    'secret'   => $config['secret'],
-			    'js_code'  => $post['code'],
-			    'grant_type' => 'authorization_code'
-			];
-
-			$result = Http::sendRequest("https://api.weixin.qq.com/sns/jscode2session", $params, 'GET');
-			$json = (array)json_decode($result['msg'], true);
-
-			if(!isset($json['openid'])){
-				$this->error(__('小程序AppID或AppSecret配置错误'));
-			}
-
-			// 手机号解码
-			$encryptedData = request()->post('encryptedData','','trim');
-			$decrypt = new wxBizDataCrypt($params['appid'], $json['session_key']);
-			$decrypt->decryptData($encryptedData, $post['iv'], $data);
-			$data = (array)json_decode($data, true);
-
-//            $json['openid'] = '0e1Jh2ll26Aedf438Zml2vA1hx3Jh2lU';
-//            $platform = '18272622100';
-//            $data = [];
+            $json['openid'] = '0e1Jh2ll26Aedf438Zml2vA1hx3Jh2lU';
+            $platform = '18272622100';
+            $data = [];
 			$ret = \think\Db::transaction(function () use ($json,$platform,$data) {
 				$isInfo = 0;
 
