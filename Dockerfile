@@ -15,14 +15,35 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tencent.com/g' /etc/apk/repositorie
     php7 \
     php7-json \
     php7-ctype \
-	php7-exif \
-	php7-pdo \
+    php7-exif \
+    php7-pdo \
     php7-pdo_mysql \
     php7-fpm \
     php7-curl \
     php7-mbstring \
+    php7-bcmath \
+    php7-bz2 \
+    php7-calendar \
+    php7-dom \
+    php7-fileinfo \
+    php7-gd \
+    php7-iconv \
+    php7-mysqli \
+    php7-openssl \
+    php7-phar \
+    php7-session \
+    php7-simplexml \
+    php7-soap \
+    php7-sockets \
+    php7-tokenizer \
+    php7-xml \
+    php7-xmlreader \
+    php7-xmlwriter \
+    php7-zip \
+    php7-zlib \
     nginx \
     && rm -f /var/cache/apk/*
+
 
 # 设定工作目录
 WORKDIR /app
