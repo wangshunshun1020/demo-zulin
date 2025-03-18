@@ -47,7 +47,12 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tencent.com/g' /etc/apk/repositorie
 
 # 设定工作目录
 WORKDIR /app
+# 安装 Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# 安装依赖
+COPY composer.json composer.lock /app/
+RUN composer install --no-dev --optimize-autoloader
 # 将当前目录下所有文件拷贝到/app （.dockerignore中文件除外）
 COPY . /app
 
