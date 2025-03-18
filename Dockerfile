@@ -7,11 +7,8 @@ FROM alpine:3.13
 
 # 使用 HTTPS 协议访问容器云调用证书安装
 RUN apk add ca-certificates
-# 安装必要的扩展和 Composer
-RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev zip git && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install gd && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# 安装 Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # 安装依赖包，如需其他依赖包，请到alpine依赖包管理(https://pkgs.alpinelinux.org/packages?name=php8*imagick*&branch=v3.13)查找。
 # 选用国内镜像源以提高下载速度
