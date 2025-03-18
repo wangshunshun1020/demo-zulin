@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile.development
+      dockerfile: Dockerfile
     volumes:
       - .:/app
     ports:
@@ -15,10 +15,9 @@ services:
       - wxcloud=demo-zulin
       - role=container
     environment:
-      - MYSQL_USERNAME=
-      - MYSQL_PASSWORD=
-      - MYSQL_ADDRESS=
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=Aa11223344
+      - MYSQL_ADDRESS=10.37.105.91
 networks:
   default:
-    external:
-      name: wxcb0
+    driver: bridge
