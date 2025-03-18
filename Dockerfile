@@ -14,7 +14,7 @@ RUN apk add ca-certificates
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tencent.com/g' /etc/apk/repositories \
     && apk add --update --no-cache \
     curl \
-    php7 \
+    php7 = 7.4.34-r0 \
     php7-json \
     php7-ctype \
 	php7-exif \
